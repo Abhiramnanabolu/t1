@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Student, Subject } from "@/lib/types"
+import { Student, Subject, Semester } from "@/lib/types"
 
 interface StudentDetailsProps {
   student: Student
@@ -19,7 +19,9 @@ interface StudentDetailsProps {
 export default function StudentDetails({ student }: StudentDetailsProps) {
   const [selectedSemester, setSelectedSemester] = useState("sem1")
 
-  const semesters = Object.keys(student.semesters).filter(sem => !['sem7', 'sem8'].includes(sem))
+  const semesters = Object.entries(student.semesters)
+  .filter(([sem, data]) => data !== null && !['sem7', 'sem8'].includes(sem))
+  .map(([sem]) => sem);
 
   return (
     <div className="p-6 bg-gray-50 space-y-6">
@@ -30,7 +32,7 @@ export default function StudentDetails({ student }: StudentDetailsProps) {
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <p className="text-sm text-gray-500">Credits</p>
-          <p className="text-2xl font-semibold text-gray-800">{student.studentCredits}/123</p>
+          <p className="text-2xl font-semibold text-gray-800">{student.studentCredits}/{student.totalCredits}</p>
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <p className="text-sm text-gray-500">Due Subjects</p>
@@ -47,7 +49,9 @@ export default function StudentDetails({ student }: StudentDetailsProps) {
         </TabsList>
         {semesters.map((semester) => (
           <TabsContent key={semester} value={semester}>
-            <SemesterTable subjects={student.semesters[semester]} />
+            {student.semesters[semester] && (
+              <SemesterTable subjects={student.semesters[semester] as Semester} />
+            )}
           </TabsContent>
         ))}
       </Tabs>
@@ -56,7 +60,7 @@ export default function StudentDetails({ student }: StudentDetailsProps) {
 }
 
 interface SemesterTableProps {
-  subjects: { [key: string]: Subject }
+  subjects: Semester
 }
 
 function SemesterTable({ subjects }: SemesterTableProps) {
