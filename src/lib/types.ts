@@ -16,7 +16,7 @@ export interface Student {
   roll_number: string
   name: string
   semesters: {
-    [key: string]: Semester
+    [key: string]: Semester | null
   }
   totalSubjects: number
   dueSubjects: number
