@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Student, Subject, Semester } from "@/lib/types"
+import { Student, Semester } from "@/lib/types"
 
 interface StudentDetailsProps {
   student: Student
