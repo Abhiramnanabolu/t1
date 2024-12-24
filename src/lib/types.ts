@@ -22,6 +22,6 @@ export interface Student {
   dueSubjects: number
   totalCredits: number
   studentCredits: number
-  GPA: string
+  GPA: string | null
 }
 
