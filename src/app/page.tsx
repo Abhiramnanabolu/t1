@@ -15,7 +15,7 @@ export default function Home() {
     <main className="container mx-auto p-8 bg-white min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-2 text-gray-800">Mahtama Gandhi Institute of Technology</h1>
       <h1 className='text-xl font-bold text-center mb-6 text-gray-800'>Student Grade Overview (ECE - 3)</h1>
-      <p>Click on a row to displau semester-wise details</p>
+      <p className='text-sm text-center mb-2 text-gray-800'>Click on a student to view their grades</p>
       <StudentsTable 
         students={studentsData} 
         onStudentSelect={handleStudentSelect}
