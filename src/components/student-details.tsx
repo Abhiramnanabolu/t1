@@ -32,7 +32,7 @@ export default function StudentDetails({ student }: StudentDetailsProps) {
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <p className="text-sm text-gray-500">Credits</p>
-          <p className="text-2xl font-semibold text-gray-800">{student.studentCredits}/{student.totalCredits}</p>
+          <p className="text-2xl font-semibold text-gray-800">{student.studentCredits}/123</p>
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <p className="text-sm text-gray-500">Due Subjects</p>
